@@ -26,6 +26,9 @@ public class Cuenta{
     private Boolean estado;
     @OneToMany(mappedBy = "cuenta")
     private List<Movimiento> movimientos;
+    @ManyToOne(cascade = CascadeType.PERSIST)
+    @JoinColumn(name = "cliente_id")
+    private Cliente cliente;
 
     public String getNumeroCuenta() {
         return numeroCuenta;
@@ -66,4 +69,13 @@ public class Cuenta{
     public void setMovimientos(List<Movimiento> movimientos) {
         this.movimientos = movimientos;
     }
+
+    public Cliente getCliente() {
+        return cliente;
+    }
+
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
+    }
+
 }
