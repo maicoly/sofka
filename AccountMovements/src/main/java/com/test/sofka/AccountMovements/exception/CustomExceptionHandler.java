@@ -22,7 +22,7 @@ public class CustomExceptionHandler {
     @ExceptionHandler(CustomException.class)
     public ResponseEntity<Object> handleCustomException(CustomException ex) {
         Map<String, Object> response = new HashMap<>();
-        response.put("error", ex.getDescError());
+        response.put("error", "REVISE LOGS");
         response.put("message", ex.getMessage());
         response.put("timestamp", LocalDateTime.now());
         return new ResponseEntity<>(response, HttpStatus.BAD_REQUEST);
