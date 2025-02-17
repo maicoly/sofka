@@ -18,3 +18,10 @@ Este proyecto proporciona una solución para gestionar los movimientos de cuenta
 - **Project Reactor (Mono)**: Para manejar la programación reactiva.
 - **PostgreSQL**: Base de datos relacional para almacenar las cuentas y movimientos.
 - **Java 21**: Versión del OPEN JDK utilizada para el desarrollo.sarrollo.
+
+# DOCKER CONTAINER RUNNING
+
+El repositorio puedes verlo en mi docker hub publico: https://hub.docker.com/repository/docker/mmorocho/gittemp_app-client-person/general
+
+- **1** go to ../docker
+- **2** run with: **docker-compose up** (or docker-compose up --build)
