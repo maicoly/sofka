@@ -1,0 +1,31 @@
+version: '3'
+services:
+  postgres:
+    image: postgres:latest
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: bittersweet
+      POSTGRES_DB: sofka
+    ports:
+      - "5432:5432"  # Exponer el puerto 5432 de PostgreSQL a la máquina anfitriona
+    volumes:
+      - postgres-data:/var/lib/postgresql/data  # Persistir datos de PostgreSQL
+
+  app-account-movements:
+    build: .
+    depends_on:
+      - postgres  # Asegurarse de que PostgreSQL esté listo antes de la aplicación
+    ports:
+      - "9091:8081"  # Exponer el puerto 8081 del contenedor al puerto 9091 en la máquina anfitriona
+    command: ["java", "-jar", "AccountMovements-0.0.1-SNAPSHOT.jar"]
+
+  app-client-person:
+    build: .
+    depends_on:
+      - postgres  # Asegurarse de que PostgreSQL esté listo antes de la aplicación
+    ports:
+      - "9092:8080"  # Exponer el puerto 8080 del contenedor al puerto 9092 en la máquina anfitriona
+    command: ["java", "-jar", "ClientPerson-0.0.1-SNAPSHOT.jar"]
+
+volumes:
+  postgres-data:
