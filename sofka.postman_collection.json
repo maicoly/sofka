@@ -240,6 +240,40 @@
 					"response": []
 				}
 			]
+		},
+		{
+			"name": "report",
+			"item": [
+				{
+					"name": "get movements",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/reportes?fechaInicio=2025-01-01 00:00:00&fechaFin=2025-02-17 23:59:59",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"reportes"
+							],
+							"query": [
+								{
+									"key": "fechaInicio",
+									"value": "2025-01-01 00:00:00"
+								},
+								{
+									"key": "fechaFin",
+									"value": "2025-02-17 23:59:59"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
 		}
 	]
 }

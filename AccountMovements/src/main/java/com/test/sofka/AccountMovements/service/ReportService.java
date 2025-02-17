@@ -3,6 +3,7 @@ package com.test.sofka.AccountMovements.service;
 import com.test.sofka.AccountMovements.model.entity.Cuenta;
 import com.test.sofka.AccountMovements.model.entity.Movimiento;
 import com.test.sofka.AccountMovements.model.trama.ReporteDTO;
+import com.test.sofka.AccountMovements.model.trama.ReporteMovimientos;
 import com.test.sofka.AccountMovements.respository.CuentaRepository;
 import com.test.sofka.AccountMovements.respository.MovimientoRepository;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,24 +23,22 @@ public class ReportService {
     private MovimientoRepository movimientoRepository;
 
     public List<ReporteDTO> generarReporte(LocalDateTime fechaInicio, LocalDateTime fechaFin) {
-        // Obtenemos todas las cuentas
         List<Cuenta> cuentas = cuentaRepository.findAll();
 
-        // Creamos una lista para los reportes
         List<ReporteDTO> reportes = new ArrayList<>();
 
-        // Iteramos sobre las cuentas y generamos el reporte para cada una
         for (Cuenta cuenta : cuentas) {
-            // Obtenemos los movimientos de la cuenta dentro del rango de fechas
             List<Movimiento> movimientos = movimientoRepository.findByCuentaAndFechaBetween(cuenta, fechaInicio, fechaFin);
-
-            // Calculamos el saldo de la cuenta (puedes agregar lógica adicional aquí si es necesario)
             BigDecimal saldoTotal = cuenta.getSaldoInicial();
-
-            // Creamos el DTO para el reporte
-            ReporteDTO reporte = new ReporteDTO(cuenta.getNumeroCuenta(), saldoTotal, movimientos);
-
-            // Añadimos el reporte a la lista
+            List<ReporteMovimientos> repMovs = new ArrayList<>();
+            for(Movimiento mov: movimientos){
+                ReporteMovimientos rep = new ReporteMovimientos();
+                rep.setValor(mov.getValor());
+                rep.setFecha(mov.getFecha());
+                rep.setTipoMovimiento(mov.getTipoMovimiento());
+                repMovs.add(rep);
+            }
+            ReporteDTO reporte = new ReporteDTO(cuenta.getNumeroCuenta(), saldoTotal, repMovs);
             reportes.add(reporte);
         }
 

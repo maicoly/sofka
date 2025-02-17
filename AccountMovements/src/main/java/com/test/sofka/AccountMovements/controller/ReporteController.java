@@ -13,6 +13,13 @@ import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
 import java.util.List;
 
+
+/**
+ * Main controller for get report for movements
+ *
+ * @autor maicoly
+ * @fecha 2025/02/16
+ */
 @RestController
 @RequestMapping("/reportes")
 public class ReporteController {

@@ -8,9 +8,9 @@ import java.util.List;
 public class ReporteDTO {
     private String numeroCuenta;
     private BigDecimal saldoInicial;
-    private List<Movimiento> movimientos;
+    private List<ReporteMovimientos> movimientos;
 
-    public ReporteDTO(String numeroCuenta, BigDecimal saldoInicial, List<Movimiento> movimientos) {
+    public ReporteDTO(String numeroCuenta, BigDecimal saldoInicial, List<ReporteMovimientos> movimientos) {
         this.numeroCuenta = numeroCuenta;
         this.saldoInicial = saldoInicial;
         this.movimientos = movimientos;
@@ -32,11 +32,11 @@ public class ReporteDTO {
         this.saldoInicial = saldoInicial;
     }
 
-    public List<Movimiento> getMovimientos() {
+    public List<ReporteMovimientos> getMovimientos() {
         return movimientos;
     }
 
-    public void setMovimientos(List<Movimiento> movimientos) {
+    public void setMovimientos(List<ReporteMovimientos> movimientos) {
         this.movimientos = movimientos;
     }
 }
