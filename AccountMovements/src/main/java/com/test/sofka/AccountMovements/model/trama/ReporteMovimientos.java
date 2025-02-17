@@ -8,6 +8,8 @@ public class ReporteMovimientos {
     private LocalDateTime fecha;
     private String tipoMovimiento;
     private BigDecimal valor;
+    private BigDecimal saldoDisponible;
+    private Boolean estado;
 
     public LocalDateTime getFecha() {
         return fecha;
@@ -31,5 +33,22 @@ public class ReporteMovimientos {
 
     public void setValor(BigDecimal valor) {
         this.valor = valor;
+    }
+
+
+    public Boolean getEstado() {
+        return estado;
+    }
+
+    public void setEstado(Boolean estado) {
+        this.estado = estado;
+    }
+
+    public BigDecimal getSaldoDisponible() {
+        return saldoDisponible;
+    }
+
+    public void setSaldoDisponible(BigDecimal saldoDisponible) {
+        this.saldoDisponible = saldoDisponible;
     }
 }

@@ -1,7 +1,9 @@
 package com.test.sofka.AccountMovements.service;
 
 import com.test.sofka.AccountMovements.exception.CustomException;
+import com.test.sofka.AccountMovements.model.entity.Cliente;
 import com.test.sofka.AccountMovements.model.entity.Cuenta;
+import com.test.sofka.AccountMovements.respository.ClienteRepository;
 import com.test.sofka.AccountMovements.respository.CuentaRepository;
 import com.test.sofka.AccountMovements.utils.ErrorMessages;
 import jakarta.transaction.Transactional;
@@ -24,8 +26,15 @@ public class CuentaService {
 
     @Autowired
     private CuentaRepository cuentaRepository;
+    @Autowired
+    private ClienteRepository clienteRepository;
 
     public Mono<Cuenta> createCuenta(Cuenta cuenta) {
+        Optional<Cliente> cliente = clienteRepository.findByClienteId(cuenta.getCliente().getClienteId());
+        if(!cliente.isPresent()){
+            throw new CustomException(String.format(ErrorMessages.CLIENTE_NO_ENCONTRADO, cuenta.getCliente().getClienteId()));
+        }
+        cuenta.setCliente(cliente.get());
         return Mono.fromCallable(() -> cuentaRepository.save(cuenta))
                 .onErrorResume(Throwable.class, e -> {
                     return Mono.error(new CustomException(ErrorMessages.OPERACION_ERROR, e.getMessage()));

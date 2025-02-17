@@ -7,13 +7,23 @@ import java.util.List;
 
 public class ReporteDTO {
     private String numeroCuenta;
+    private String datosCliente;
     private BigDecimal saldoInicial;
     private List<ReporteMovimientos> movimientos;
 
-    public ReporteDTO(String numeroCuenta, BigDecimal saldoInicial, List<ReporteMovimientos> movimientos) {
+    public ReporteDTO(String numeroCuenta, String datos, BigDecimal saldoInicial, List<ReporteMovimientos> movimientos) {
         this.numeroCuenta = numeroCuenta;
+        this.datosCliente = datos;
         this.saldoInicial = saldoInicial;
         this.movimientos = movimientos;
+    }
+
+    public String getDatosCliente() {
+        return datosCliente;
+    }
+
+    public void setDatosCliente(String datosCliente) {
+        this.datosCliente = datosCliente;
     }
 
     public String getNumeroCuenta() {

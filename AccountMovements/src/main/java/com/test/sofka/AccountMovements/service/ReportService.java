@@ -36,9 +36,11 @@ public class ReportService {
                 rep.setValor(mov.getValor());
                 rep.setFecha(mov.getFecha());
                 rep.setTipoMovimiento(mov.getTipoMovimiento());
+                rep.setEstado(cuenta.getEstado());
+                rep.setSaldoDisponible(mov.getSaldo());
                 repMovs.add(rep);
             }
-            ReporteDTO reporte = new ReporteDTO(cuenta.getNumeroCuenta(), saldoTotal, repMovs);
+            ReporteDTO reporte = new ReporteDTO(cuenta.getNumeroCuenta(), cuenta.getCliente().getNombre(), saldoTotal, repMovs);
             reportes.add(reporte);
         }
 

@@ -117,7 +117,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n  \"numeroCuenta\": \"1234567890\",\n  \"tipoCuenta\": \"Ahorros\",\n  \"saldoInicial\": 1000.00,\n  \"estado\": true\n}",
+							"raw": "{\n    \"numeroCuenta\": \"1234567891\",\n    \"tipoCuenta\": \"Ahorros\",\n    \"saldoInicial\": 1000.00,\n    \"estado\": true,\n    \"cliente\": {\n        \"clienteId\": \"66\"\n    }\n}",
 							"options": {
 								"raw": {
 									"language": "json"
